@@ -70,4 +70,6 @@ When decoding an `NSArray`, perform a conditional cast to `[AnyObject]` before p
 let foos = Foo.decode(NSKeyedUnarchiver.unarchiveObjectWithData(data) as? [AnyObject])
 ```
 
+### Installation
+ValueCoding builds as a cross platform (iOS, OS X, watchOS) extension compatible framework. 
 
