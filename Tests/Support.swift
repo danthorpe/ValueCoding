@@ -9,13 +9,9 @@
 import Foundation
 import ValueCoding
 
-struct Foo: Equatable, ValueCoding {
+struct Foo: ValueCoding {
     typealias Archiver = FooArchiver
     let bar: String
-}
-
-func ==(a: Foo, b: Foo) -> Bool {
-    return a.bar == b.bar
 }
 
 class FooArchiver: NSObject, NSCoding, ArchiverType {
@@ -39,3 +35,10 @@ class FooArchiver: NSObject, NSCoding, ArchiverType {
         aCoder.encodeObject(value.bar, forKey: Keys.Bar.rawValue)
     }
 }
+
+extension Foo: Equatable { }
+
+func ==(a: Foo, b: Foo) -> Bool {
+    return a.bar == b.bar
+}
+
