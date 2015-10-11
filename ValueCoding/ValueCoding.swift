@@ -37,12 +37,12 @@ public protocol ValueCoding {
 
 extension ArchiverType where ValueType: ValueCoding, ValueType.Archiver == Self {
 
-    internal static func unarchive(object: AnyObject?) -> ValueType? {
+    internal static func decode(object: AnyObject?) -> ValueType? {
         return (object as? Self)?.value
     }
 
-    internal static func unarchive<S: SequenceType where S.Generator.Element: AnyObject>(objects: S?) -> [ValueType] {
-        return objects?.flatMap(unarchive) ?? []
+    internal static func decode<S: SequenceType where S.Generator.Element: AnyObject>(objects: S?) -> [ValueType] {
+        return objects?.flatMap(decode) ?? []
     }
 }
 
@@ -57,49 +57,49 @@ extension SequenceType
 }
 
 /**
-Default implementations for archiving and unarchiving, instances or sequences
-of instances of the ValueCoding types.
+Static methods for decoding `AnyObject` to Self, and returning encoded object
+of Self.
 */
 extension ValueCoding where Archiver: NSCoding, Archiver.ValueType == Self {
 
     /**
-    Unarchives the value from a single archive, if possible.
+    Decodes the value from a single archive, if possible.
     For example
 
-        let foo = Foo.unarchive(decoder.decodeObjectForKey("foo"))
+        let foo = Foo.decode(decoder.decodeObjectForKey("foo"))
 
     - parameter object: an optional `AnyObject` which if not nil should
     be of `Archiver` type.
     - returns: an optional `Self`
     */
-    public static func unarchive(object: AnyObject?) -> Self? {
-        return Archiver.unarchive(object)
+    public static func decode(object: AnyObject?) -> Self? {
+        return Archiver.decode(object)
     }
 
     /**
-    Unarchives the values from a sequence of archives, if possible
+    Decodes the values from a sequence of archives, if possible
     For example
 
-        let foos = Foo.unarchive(decoder.decodeObjectForKey("foos") as? [AnyObject])
+        let foos = Foo.decode(decoder.decodeObjectForKey("foos") as? [AnyObject])
     
     - parameter objects: a `SequenceType` of `AnyObject`.
     - returns: the array of values which were able to be unarchived.
     */
-    public static func unarchive<S: SequenceType where S.Generator.Element: AnyObject>(objects: S?) -> [Self] {
-        return Archiver.unarchive(objects)
+    public static func decode<S: SequenceType where S.Generator.Element: AnyObject>(objects: S?) -> [Self] {
+        return Archiver.decode(objects)
     }
 
     /**
-    Creates an archive for the value type. 
+    Encodes the value type into its Archvier.
     
     Typically this would be used inside of 
     `encodeWithCoder:` when the value is composed inside
     another `ValueCoding` or `NSCoding` type. For example:
     
-        encoder.encodeObject(foo.archive, forKey: "foo")
+        encoder.encodeObject(foo.encoded, forKey: "foo")
 
     */
-    public var archive: Archiver {
+    public var encoded: Archiver {
         return Archiver(self)
     }
 }
@@ -111,18 +111,18 @@ extension SequenceType
     Generator.Element.Archiver.ValueType == Generator.Element {
 
     /**
-    Access the archives from a sequence of values.
+    Encodes the sequence of value types into a sequence of archives.
 
     Typically this would be used inside of
     `encodeWithCoder:` when a sequence of values is
     composed inside another `ValueCoding` or 
     `NSCoding` type. For example:
 
-        encoder.encodeObject(foos.archives, forKey: "foos")
+        encoder.encodeObject(foos.encoded, forKey: "foos")
 
     */
-    public var archive: [Generator.Element.Archiver] {
-        return map { $0.archive }
+    public var encoded: [Generator.Element.Archiver] {
+        return map { $0.encoded }
     }
 }
 

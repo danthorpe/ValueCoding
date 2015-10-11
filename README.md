@@ -41,33 +41,33 @@ class FooArchiver: NSObject, NSCoding, ArchiverType {
 
 If you are converting existing models from classes to values types, the `NSCoding` methods should look familiar, and hopefully you are able to reuse your existing code.
 
-The framework provides static methods and properties for types which conform to `ValueCoding` with correct archivers. Therefore, given a value of `Foo`, you can get an archive ready for serialization using `NSKeyedArchiver`.
+The framework provides static methods and properties for types which conform to `ValueCoding` with correct archivers. Therefore, given a value of `Foo`, you can encode it ready for serialization using `NSKeyedArchiver`.
 
 ```swift
-let data = NSKeyedArchiver.archivedDataWithRootObject(foo.archive)
+let data = NSKeyedArchiver.archivedDataWithRootObject(foo.encoded)
 ```
 
 and likewise, unarchiving can be done:
 
 ```swift
-if let foo = Foo.unarchive(NSKeyedUnarchiver.unarchiveObjectWithData(data)) {
-    // etc, unarchive always returns optionals.
+if let foo = Foo.decode(NSKeyedUnarchiver.unarchiveObjectWithData(data)) {
+    // etc, unarchive returns optionals when working with a single item.
 }
 ```
 
 These methods can also be used if composing value types inside other types which require encoding.
 
-When working with sequences of values, use the `archives` property.
+When working with sequences of values, use the `encoded` property on the sequence.
 
 ```swift
 let foos = Set(arrayLiteral: Foo(), Foo(), Foo())
-let data = NSKeyedArchiver.archivedDataWithRootObject(foos.archive)
+let data = NSKeyedArchiver.archivedDataWithRootObject(foos.encoded)
 ```
 
-When unarchiving an `NSArray`, perform a conditional cast to `[AnyObject]` before passing it to `unarchive`. The result will be an `Array<Foo>` which will be empty if the object was not cast successfully. In addition, any members of `[AnyObject]` which did not unarchive will filtered from the result. This means that the length of the result will be less than the original archived array if there was an issue decoding.
+When decoding an `NSArray`, perform a conditional cast to `[AnyObject]` before passing it to `decode`. The result will be an `Array<Foo>` which will be empty if the object was not cast successfully. In addition, any members of `[AnyObject]` which did not unarchive will filtered from the result. This means that the length of the result will be less than the original archived array if there was an issue decoding.
 
 ```swift
-let foos = Foo.unarchive(NSKeyedUnarchiver.unarchiveObjectWithData(data) as? [AnyObject])
+let foos = Foo.decode(NSKeyedUnarchiver.unarchiveObjectWithData(data) as? [AnyObject])
 ```
 
 

@@ -41,28 +41,28 @@ class ValueCodingTests: XCTestCase {
     }
 
     func test__single_archiving() {
-        let unarchived = Foo.unarchive(item.archive)
+        let unarchived = Foo.decode(item.encoded)
         XCTAssertNotNil(unarchived)
         XCTAssertEqual(unarchived!, item)
     }
 
     func test__multiple_archiving() {
-        let unarchived = Foo.unarchive(items.archive)
+        let unarchived = Foo.decode(items.encoded)
         XCTAssertEqual(unarchived, items)
     }
 
     func test__with_single_nil() {
         let empty: AnyObject? = .None
-        XCTAssertNil(Foo.unarchive(empty))
+        XCTAssertNil(Foo.decode(empty))
     }
 
     func test__with_sequence_nil() {
         let empty: [AnyObject]? = .None
-        XCTAssertTrue(Foo.unarchive(empty).isEmpty)
+        XCTAssertTrue(Foo.decode(empty).isEmpty)
     }
 
     func test__get_values_from_sequence_of_archivers() {
-        XCTAssertEqual(items.archive.values, items)
+        XCTAssertEqual(items.encoded.values, items)
     }
 }
 
