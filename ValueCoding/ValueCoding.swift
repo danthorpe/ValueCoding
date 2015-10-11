@@ -14,7 +14,7 @@ import Foundation
 A generic protocol for classes which can 
 archive/unarchive value types.
 */
-public protocol ArchiverType {
+public protocol CodingType {
 
     typealias ValueType
 
@@ -30,12 +30,12 @@ A generic protocol for value types which require
 archiving.
 */
 public protocol ValueCoding {
-    typealias Archiver: ArchiverType
+    typealias Coder: CodingType
 }
 
 // MARK: - Protocol Extensions
 
-extension ArchiverType where ValueType: ValueCoding, ValueType.Archiver == Self {
+extension CodingType where ValueType: ValueCoding, ValueType.Coder == Self {
 
     internal static func decode(object: AnyObject?) -> ValueType? {
         return (object as? Self)?.value
@@ -48,7 +48,7 @@ extension ArchiverType where ValueType: ValueCoding, ValueType.Archiver == Self 
 
 extension SequenceType
     where
-    Generator.Element: ArchiverType {
+    Generator.Element: CodingType {
 
     /// Access the values from a sequence of archives.
     public var values: [Generator.Element.ValueType] {
@@ -60,7 +60,7 @@ extension SequenceType
 Static methods for decoding `AnyObject` to Self, and returning encoded object
 of Self.
 */
-extension ValueCoding where Archiver: NSCoding, Archiver.ValueType == Self {
+extension ValueCoding where Coder: NSCoding, Coder.ValueType == Self {
 
     /**
     Decodes the value from a single archive, if possible.
@@ -73,7 +73,7 @@ extension ValueCoding where Archiver: NSCoding, Archiver.ValueType == Self {
     - returns: an optional `Self`
     */
     public static func decode(object: AnyObject?) -> Self? {
-        return Archiver.decode(object)
+        return Coder.decode(object)
     }
 
     /**
@@ -86,7 +86,7 @@ extension ValueCoding where Archiver: NSCoding, Archiver.ValueType == Self {
     - returns: the array of values which were able to be unarchived.
     */
     public static func decode<S: SequenceType where S.Generator.Element: AnyObject>(objects: S?) -> [Self] {
-        return Archiver.decode(objects)
+        return Coder.decode(objects)
     }
 
     /**
@@ -99,16 +99,16 @@ extension ValueCoding where Archiver: NSCoding, Archiver.ValueType == Self {
         encoder.encodeObject(foo.encoded, forKey: "foo")
 
     */
-    public var encoded: Archiver {
-        return Archiver(self)
+    public var encoded: Coder {
+        return Coder(self)
     }
 }
 
 extension SequenceType
     where
     Generator.Element: ValueCoding,
-    Generator.Element.Archiver: NSCoding,
-    Generator.Element.Archiver.ValueType == Generator.Element {
+    Generator.Element.Coder: NSCoding,
+    Generator.Element.Coder.ValueType == Generator.Element {
 
     /**
     Encodes the sequence of value types into a sequence of archives.
@@ -121,7 +121,7 @@ extension SequenceType
         encoder.encodeObject(foos.encoded, forKey: "foos")
 
     */
-    public var encoded: [Generator.Element.Archiver] {
+    public var encoded: [Generator.Element.Coder] {
         return map { $0.encoded }
     }
 }

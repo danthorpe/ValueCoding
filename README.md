@@ -12,11 +12,11 @@ A minimal example for a simple `struct` is shown below:
 import ValueCoding
 
 struct Foo: ValueCoding {
-    typealias Archiver = FooArchiver
+    typealias Coder = FooCoder
     let bar: String
 }
 
-class FooArchiver: NSObject, NSCoding, ArchiverType {
+class FooCoder: NSObject, NSCoding, CodingType {
 
     enum Keys: String {
         case Bar = "bar"
