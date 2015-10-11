@@ -1,6 +1,7 @@
 # ValueCoding
 
 [![Build status](https://badge.buildkite.com/482fd5558d9ccf05b669c55f40450166033522f32314a1bbb2.svg)](https://buildkite.com/blindingskies/valuecoding)
+[![codecov.io](http://codecov.io/github/danthorpe/ValueCoding/coverage.svg?branch=development)](http://codecov.io/github/danthorpe/ValueCoding?branch=development)
 
 ValueCoding is a simple pair of protocols to support the archiving and unarchiving of Swift value types.
 
