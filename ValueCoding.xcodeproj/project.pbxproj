@@ -424,7 +424,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/ValueCoding/Supporting Files/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.danthorpe.$(PRODUCT_NAME)";
 				PRODUCT_NAME = ValueCoding;
-				PROJECT_VERSION = 1.0;
+				PROJECT_VERSION = 1.0.1;
 			};
 			name = Debug;
 		};
@@ -434,7 +434,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/ValueCoding/Supporting Files/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.danthorpe.$(PRODUCT_NAME)";
 				PRODUCT_NAME = ValueCoding;
-				PROJECT_VERSION = 1.0;
+				PROJECT_VERSION = 1.0.1;
 			};
 			name = Release;
 		};
@@ -980,6 +980,7 @@
 				652D3DD81BCAB86D00712107 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
