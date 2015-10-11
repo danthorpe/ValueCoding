@@ -47,7 +47,7 @@ class ValueCodingTests: XCTestCase {
     }
 
     func test__multiple_archiving() {
-        let unarchived = Foo.unarchive(items.archives)
+        let unarchived = Foo.unarchive(items.archive)
         XCTAssertEqual(unarchived, items)
     }
 
@@ -62,8 +62,7 @@ class ValueCodingTests: XCTestCase {
     }
 
     func test__get_values_from_sequence_of_archivers() {
-        let archives = items.archives
-        XCTAssertEqual(archives.values, items)
+        XCTAssertEqual(items.archive.values, items)
     }
 }
 

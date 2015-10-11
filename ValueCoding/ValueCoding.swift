@@ -121,7 +121,7 @@ extension SequenceType
         encoder.encodeObject(foos.archives, forKey: "foos")
 
     */
-    public var archives: [Generator.Element.Archiver] {
+    public var archive: [Generator.Element.Archiver] {
         return map { $0.archive }
     }
 }
