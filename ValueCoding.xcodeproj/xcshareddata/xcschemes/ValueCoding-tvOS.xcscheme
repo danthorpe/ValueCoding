@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "652D3D811BCAA5AD00712107"
-               BuildableName = "ValueCoding.framework"
-               BlueprintName = "ValueCoding-OSX"
+               BlueprintIdentifier = "65E766141BDFA84200889368"
+               BuildableName = "ValueCoding-tvOS.framework"
+               BlueprintName = "ValueCoding-tvOS"
                ReferencedContainer = "container:ValueCoding.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -26,16 +26,15 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      codeCoverageEnabled = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "652D3D8B1BCAA5AE00712107"
-               BuildableName = "ValueCoding-OSXTests.xctest"
-               BlueprintName = "ValueCoding-OSXTests"
+               BlueprintIdentifier = "65E7661D1BDFA84300889368"
+               BuildableName = "ValueCoding-tvOSTests.xctest"
+               BlueprintName = "ValueCoding-tvOSTests"
                ReferencedContainer = "container:ValueCoding.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -43,9 +42,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "652D3D811BCAA5AD00712107"
-            BuildableName = "ValueCoding.framework"
-            BlueprintName = "ValueCoding-OSX"
+            BlueprintIdentifier = "65E766141BDFA84200889368"
+            BuildableName = "ValueCoding-tvOS.framework"
+            BlueprintName = "ValueCoding-tvOS"
             ReferencedContainer = "container:ValueCoding.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -65,9 +64,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "652D3D811BCAA5AD00712107"
-            BuildableName = "ValueCoding.framework"
-            BlueprintName = "ValueCoding-OSX"
+            BlueprintIdentifier = "65E766141BDFA84200889368"
+            BuildableName = "ValueCoding-tvOS.framework"
+            BlueprintName = "ValueCoding-tvOS"
             ReferencedContainer = "container:ValueCoding.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -83,9 +82,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "652D3D811BCAA5AD00712107"
-            BuildableName = "ValueCoding.framework"
-            BlueprintName = "ValueCoding-OSX"
+            BlueprintIdentifier = "65E766141BDFA84200889368"
+            BuildableName = "ValueCoding-tvOS.framework"
+            BlueprintName = "ValueCoding-tvOS"
             ReferencedContainer = "container:ValueCoding.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
