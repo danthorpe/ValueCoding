@@ -8,11 +8,11 @@
 
 import Foundation
 
-// MARK: - ArchiverType
+// MARK: - CodingType
 
 /**
 A generic protocol for classes which can 
-archive/unarchive value types.
+encode/decode value types.
 */
 public protocol CodingType {
 
@@ -25,9 +25,11 @@ public protocol CodingType {
     init(_: ValueType)
 }
 
+// MARK: - ValueCoding
+
 /**
 A generic protocol for value types which require
-archiving.
+coding.
 */
 public protocol ValueCoding {
     typealias Coder: CodingType
@@ -50,7 +52,7 @@ extension SequenceType
     where
     Generator.Element: CodingType {
 
-    /// Access the values from a sequence of archives.
+    /// Access the values from a sequence of coders.
     public var values: [Generator.Element.ValueType] {
         return map { $0.value }
     }
@@ -63,13 +65,13 @@ of Self.
 extension ValueCoding where Coder: NSCoding, Coder.ValueType == Self {
 
     /**
-    Decodes the value from a single archive, if possible.
+    Decodes the value from a single decoder, if possible.
     For example
 
         let foo = Foo.decode(decoder.decodeObjectForKey("foo"))
 
     - parameter object: an optional `AnyObject` which if not nil should
-    be of `Archiver` type.
+    be of `Coder` type.
     - returns: an optional `Self`
     */
     public static func decode(object: AnyObject?) -> Self? {
@@ -77,7 +79,7 @@ extension ValueCoding where Coder: NSCoding, Coder.ValueType == Self {
     }
 
     /**
-    Decodes the values from a sequence of archives, if possible
+    Decodes the values from a sequence of coders, if possible
     For example
 
         let foos = Foo.decode(decoder.decodeObjectForKey("foos") as? [AnyObject])
@@ -90,7 +92,7 @@ extension ValueCoding where Coder: NSCoding, Coder.ValueType == Self {
     }
 
     /**
-    Encodes the value type into its Archvier.
+    Encodes the value type into its Coder.
     
     Typically this would be used inside of 
     `encodeWithCoder:` when the value is composed inside
@@ -111,7 +113,7 @@ extension SequenceType
     Generator.Element.Coder.ValueType == Generator.Element {
 
     /**
-    Encodes the sequence of value types into a sequence of archives.
+    Encodes the sequence of value types into a sequence of coders.
 
     Typically this would be used inside of
     `encodeWithCoder:` when a sequence of values is
