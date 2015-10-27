@@ -3,9 +3,9 @@
 [![Build status](https://badge.buildkite.com/482fd5558d9ccf05b669c55f40450166033522f32314a1bbb2.svg)](https://buildkite.com/blindingskies/valuecoding)
 [![codecov.io](http://codecov.io/github/danthorpe/ValueCoding/coverage.svg?branch=development)](http://codecov.io/github/danthorpe/ValueCoding?branch=development)
 
-ValueCoding is a simple pair of protocols to support the archiving and unarchiving of Swift value types.
+ValueCoding is a simple pair of protocols to support the coding of Swift value types.
 
-It works by allowing a value type, which must conform to `ValueCoding` to define via a typealias its *archiver*. The archiver is another type which implements the `ArchiverType` protocol. This type will typically be an `NSObject` which implements `NSCoding` and is an adaptor which is responsible for encoding and decoding the properties of the value.
+It works by allowing a value type, which must conform to `ValueCoding` to define via a typealias its *coder*. The coder is another type which implements the `CoderType` protocol. This type will typically be an `NSObject` which implements `NSCoding` and is an adaptor which is responsible for encoding and decoding the properties of the value.
 
 A minimal example for a simple `struct` is shown below:
 
@@ -48,7 +48,7 @@ The framework provides static methods and properties for types which conform to 
 let data = NSKeyedArchiver.archivedDataWithRootObject(foo.encoded)
 ```
 
-and likewise, unarchiving can be done:
+and likewise, unarchiving (and decoding) can be done:
 
 ```swift
 if let foo = Foo.decode(NSKeyedUnarchiver.unarchiveObjectWithData(data)) {
@@ -65,7 +65,7 @@ let foos = Set(arrayLiteral: Foo(), Foo(), Foo())
 let data = NSKeyedArchiver.archivedDataWithRootObject(foos.encoded)
 ```
 
-When decoding an `NSArray`, perform a conditional cast to `[AnyObject]` before passing it to `decode`. The result will be an `Array<Foo>` which will be empty if the object was not cast successfully. In addition, any members of `[AnyObject]` which did not unarchive will filtered from the result. This means that the length of the result will be less than the original archived array if there was an issue decoding.
+When decoding an `NSArray`, perform a conditional cast to `[AnyObject]` before passing it to `decode`. The result will be an `Array<Foo>` which will be empty if the object was not cast successfully. In addition, any members of `[AnyObject]` which did not decode will filtered from the result. This means that the length of the result will be less than the original encoded array if there was an issue decoding.
 
 ```swift
 let foos = Foo.decode(NSKeyedUnarchiver.unarchiveObjectWithData(data) as? [AnyObject])

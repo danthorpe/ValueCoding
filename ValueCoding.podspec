@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name              = "ValueCoding"
-  s.version           = "1.0.1"
+  s.version           = "1.1.0"
   s.summary           = "Swift protocols for encoding/decoding value types."
   s.description       = <<-DESC
   
@@ -23,6 +23,7 @@ Pod::Spec.new do |s|
   s.requires_arc      = true
   s.ios.deployment_target = '8.0'
   s.osx.deployment_target = '10.10'
+  s.tvos.deployment_target = '9.0'
   s.watchos.deployment_target = '2.0'  
   s.source_files      = 'ValueCoding/*.swift' 
 end
