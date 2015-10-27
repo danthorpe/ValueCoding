@@ -7,17 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		652D3D8D1BCAA5AE00712107 /* ValueCoding.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 652D3D821BCAA5AD00712107 /* ValueCoding.framework */; settings = {ASSET_TAGS = (); }; };
-		652D3DA91BCAA66500712107 /* ValueCoding.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 652D3D9F1BCAA66500712107 /* ValueCoding.framework */; settings = {ASSET_TAGS = (); }; };
+		652D3D8D1BCAA5AE00712107 /* ValueCoding.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 652D3D821BCAA5AD00712107 /* ValueCoding.framework */; };
+		652D3DA91BCAA66500712107 /* ValueCoding.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 652D3D9F1BCAA66500712107 /* ValueCoding.framework */; };
 		652D3DBE1BCAA72C00712107 /* ValueCoding.h in Headers */ = {isa = PBXBuildFile; fileRef = 652D3DBB1BCAA72C00712107 /* ValueCoding.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		652D3DBF1BCAA7D700712107 /* ValueCoding.h in Headers */ = {isa = PBXBuildFile; fileRef = 652D3DBB1BCAA72C00712107 /* ValueCoding.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		652D3DC11BCAA81600712107 /* ValueCoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652D3DC01BCAA81600712107 /* ValueCoding.swift */; settings = {ASSET_TAGS = (); }; };
-		652D3DC21BCAA81900712107 /* ValueCoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652D3DC01BCAA81600712107 /* ValueCoding.swift */; settings = {ASSET_TAGS = (); }; };
-		652D3DC41BCAA84D00712107 /* ValueCodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652D3DC31BCAA84D00712107 /* ValueCodingTests.swift */; settings = {ASSET_TAGS = (); }; };
-		652D3DC51BCAA84D00712107 /* ValueCodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652D3DC31BCAA84D00712107 /* ValueCodingTests.swift */; settings = {ASSET_TAGS = (); }; };
-		652D3DCA1BCAA8C200712107 /* Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652D3DC91BCAA8C200712107 /* Support.swift */; settings = {ASSET_TAGS = (); }; };
-		652D3DCB1BCAA8C200712107 /* Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652D3DC91BCAA8C200712107 /* Support.swift */; settings = {ASSET_TAGS = (); }; };
-		652D3DD91BCAB8A300712107 /* ValueCoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652D3DC01BCAA81600712107 /* ValueCoding.swift */; settings = {ASSET_TAGS = (); }; };
+		652D3DC11BCAA81600712107 /* ValueCoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652D3DC01BCAA81600712107 /* ValueCoding.swift */; };
+		652D3DC21BCAA81900712107 /* ValueCoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652D3DC01BCAA81600712107 /* ValueCoding.swift */; };
+		652D3DC41BCAA84D00712107 /* ValueCodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652D3DC31BCAA84D00712107 /* ValueCodingTests.swift */; };
+		652D3DC51BCAA84D00712107 /* ValueCodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652D3DC31BCAA84D00712107 /* ValueCodingTests.swift */; };
+		652D3DCA1BCAA8C200712107 /* Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652D3DC91BCAA8C200712107 /* Support.swift */; };
+		652D3DCB1BCAA8C200712107 /* Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652D3DC91BCAA8C200712107 /* Support.swift */; };
+		652D3DD91BCAB8A300712107 /* ValueCoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652D3DC01BCAA81600712107 /* ValueCoding.swift */; };
 		652D3DDA1BCAB8BE00712107 /* ValueCoding.h in Headers */ = {isa = PBXBuildFile; fileRef = 652D3DBB1BCAA72C00712107 /* ValueCoding.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -424,7 +424,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/ValueCoding/Supporting Files/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.danthorpe.$(PRODUCT_NAME)";
 				PRODUCT_NAME = ValueCoding;
-				PROJECT_VERSION = 1.0.1;
+				PROJECT_VERSION = 1.1.0;
 			};
 			name = Debug;
 		};
@@ -434,7 +434,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/ValueCoding/Supporting Files/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.danthorpe.$(PRODUCT_NAME)";
 				PRODUCT_NAME = ValueCoding;
-				PROJECT_VERSION = 1.0.1;
+				PROJECT_VERSION = 1.1.0;
 			};
 			name = Release;
 		};
