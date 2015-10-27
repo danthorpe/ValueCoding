@@ -4,7 +4,11 @@ platform :ios do
 
   desc "Runs all the tests"
   lane :test do
-    scan(xcargs: "-derivedDataPath .fastlane/xcodebuild-data -enableCodeCoverage YES", scheme: 'ValueCoding-iOS')
+	xctest scheme: 'ValueCoding-iOS', 
+      sdk: 'iphonesimulator',
+      destination: 'platform=iOS Simulator,name=iPhone 6,OS=9.0',
+      destination_timeout: 120,
+      derivedDataPath: '.fastlane/xcodebuild-data'
   end
 
 end
@@ -13,7 +17,10 @@ platform :mac do
   
   desc "Runs all the tests"
   lane :test do
-        scan(xcargs: "-derivedDataPath .fastlane/xcodebuild-data -enableCodeCoverage YES", scheme: 'ValueCoding-OSX')
+	xctest scheme: 'ValueCoding-OSX', 
+    sdk: 'macosx', 
+    destination: 'platform=OS X',
+    derivedDataPath: '.fastlane/xcodebuild-data'
   end
   
 end
