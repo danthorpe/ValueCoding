@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
 
-gem 'fastlane', '>= 1.16'
+gem 'scan'
+gem 'fastlane', '>= 1.35'
 gem 'xcpretty'

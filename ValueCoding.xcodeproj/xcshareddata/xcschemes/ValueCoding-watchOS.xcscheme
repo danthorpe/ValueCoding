@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "652D3D811BCAA5AD00712107"
+               BlueprintIdentifier = "652D3DD01BCAB86D00712107"
                BuildableName = "ValueCoding.framework"
-               BlueprintName = "ValueCoding-OSX"
+               BlueprintName = "ValueCoding-watchOS"
                ReferencedContainer = "container:ValueCoding.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -26,29 +26,9 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      codeCoverageEnabled = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "652D3D8B1BCAA5AE00712107"
-               BuildableName = "ValueCoding-OSXTests.xctest"
-               BlueprintName = "ValueCoding-OSXTests"
-               ReferencedContainer = "container:ValueCoding.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "652D3D811BCAA5AD00712107"
-            BuildableName = "ValueCoding.framework"
-            BlueprintName = "ValueCoding-OSX"
-            ReferencedContainer = "container:ValueCoding.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -65,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "652D3D811BCAA5AD00712107"
+            BlueprintIdentifier = "652D3DD01BCAB86D00712107"
             BuildableName = "ValueCoding.framework"
-            BlueprintName = "ValueCoding-OSX"
+            BlueprintName = "ValueCoding-watchOS"
             ReferencedContainer = "container:ValueCoding.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -83,9 +63,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "652D3D811BCAA5AD00712107"
+            BlueprintIdentifier = "652D3DD01BCAB86D00712107"
             BuildableName = "ValueCoding.framework"
-            BlueprintName = "ValueCoding-OSX"
+            BlueprintName = "ValueCoding-watchOS"
             ReferencedContainer = "container:ValueCoding.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
