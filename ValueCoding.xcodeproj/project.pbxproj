@@ -356,7 +356,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0710;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0710;
 				TargetAttributes = {
 					652D3D811BCAA5AD00712107 = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -540,7 +540,9 @@
 		652D3D7B1BCAA53A00712107 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ENABLE_TESTABILITY = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/ValueCoding/Supporting Files/Info.plist";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "me.danthorpe.$(PRODUCT_NAME)";
 				PRODUCT_NAME = ValueCoding;
 				PROJECT_VERSION = 1.0.1;
