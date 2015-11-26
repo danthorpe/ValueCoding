@@ -80,6 +80,6 @@ let foos = Foo.decode(NSKeyedUnarchiver.unarchiveObjectWithData(data) as? [AnyOb
 ValueCoding builds as a cross platform (iOS, OS X, watchOS) extension compatible framework. It is also available via CocoaPods
 
 ```ruby
-pod ‘ValueCoding’
+pod 'ValueCoding'
 ```
 
