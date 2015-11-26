@@ -21,7 +21,7 @@ platform :mac do
   lane :test do
 
     scan(
-      scheme: "Money-OSX",
+      scheme: "ValueCoding-OSX",
       output_directory: ".ci/xcodebuild-data/",
       xcargs: "-derivedDataPath .ci/xcodebuild-data/"
     )
