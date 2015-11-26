@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name              = "ValueCoding"
-  s.version           = "1.1.0"
+  s.version           = "1.1.1"
   s.summary           = "Swift protocols for encoding/decoding value types."
   s.description       = <<-DESC
   
@@ -19,6 +19,7 @@ Pod::Spec.new do |s|
   s.author            = { "Daniel Thorpe" => "@danthorpe" }
   s.source            = { :git => "https://github.com/danthorpe/ValueCoding.git", :tag => s.version.to_s }
   s.module_name       = 'ValueCoding'
+  s.documentation_url = 'http://docs.danthorpe.me/valuecoding/1.1.1/index.html'  
   s.social_media_url  = 'https://twitter.com/danthorpe'
   s.requires_arc      = true
   s.ios.deployment_target = '8.0'

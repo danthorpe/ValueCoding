@@ -545,7 +545,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "me.danthorpe.$(PRODUCT_NAME)";
 				PRODUCT_NAME = ValueCoding;
-				PROJECT_VERSION = 1.1.0;
+				PROJECT_VERSION = 1.1.1;
 			};
 			name = Debug;
 		};
@@ -555,7 +555,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/ValueCoding/Supporting Files/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.danthorpe.$(PRODUCT_NAME)";
 				PRODUCT_NAME = ValueCoding;
-				PROJECT_VERSION = 1.1.0;
+				PROJECT_VERSION = 1.1.1;
 			};
 			name = Release;
 		};
@@ -1298,6 +1298,7 @@
 				65E766271BDFA84300889368 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		65E7662B1BDFA84300889368 /* Build configuration list for PBXNativeTarget "ValueCoding-tvOSTests" */ = {
 			isa = XCConfigurationList;
@@ -1306,6 +1307,7 @@
 				65E766291BDFA84300889368 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
