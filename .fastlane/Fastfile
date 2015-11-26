@@ -4,11 +4,13 @@ platform :ios do
 
   desc "Runs all the tests"
   lane :test do
-	xctest scheme: 'ValueCoding-iOS', 
-      sdk: 'iphonesimulator',
-      destination: 'platform=iOS Simulator,name=iPhone 6,OS=9.1',
-      destination_timeout: 120,
-      derivedDataPath: '.fastlane/xcodebuild-data'
+    
+    scan(
+      scheme: "ValueCoding-iOS",
+      output_directory: ".ci/xcodebuild-data/",
+      xcargs: "-derivedDataPath .ci/xcodebuild-data/"
+    )
+    
   end
 
 end
@@ -17,10 +19,13 @@ platform :mac do
   
   desc "Runs all the tests"
   lane :test do
-	xctest scheme: 'ValueCoding-OSX', 
-    sdk: 'macosx', 
-    destination: 'platform=OS X',
-    derivedDataPath: '.fastlane/xcodebuild-data'
+
+    scan(
+      scheme: "ValueCoding-OSX",
+      output_directory: ".ci/xcodebuild-data/",
+      xcargs: "-derivedDataPath .ci/xcodebuild-data/"
+    )
+
   end
   
 end
