@@ -79,7 +79,7 @@ let foos = Foo.decode(NSKeyedUnarchiver.unarchiveObjectWithData(data) as? [AnyOb
 
 The [Money](https://github.com/danthorpe/Money) framework contains more examples of implementing `ValueCoding`. Including the generic type [`FXTransactionCoder`](https://github.com/danthorpe/Money/blob/development/Money/Shared/FX/FX.swift#L467).
 
-The [YapDatabaseExtensions](https://github.com/danthorpe/YapDatabaseExtension) framework relies heavily on `ValueCoding`. For more examples of generic where constraints see it’s [Functional API](https://github.com/danthorpe/YapDatabaseExtensions/tree/development/YapDatabaseExtensions/Shared/Functional).
+The [YapDatabaseExtensions](https://github.com/danthorpe/YapDatabaseExtension) framework relies heavily on `ValueCoding`. For more examples of generic where constraints see its [Functional API](https://github.com/danthorpe/YapDatabaseExtensions/tree/development/YapDatabaseExtensions/Shared/Functional).
 
 ### Installation
 ValueCoding builds as a cross platform (iOS, OS X, watchOS, tvOS) extension compatible framework. It is also available via CocoaPods
