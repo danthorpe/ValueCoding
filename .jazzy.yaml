@@ -1,0 +1,17 @@
+author_name: Daniel Thorpe
+author_url: http://danthorpe.me
+module_name: ValueCoding
+module_version: 1.1.1
+github_url: https://github.com/danthorpe/ValueCoding
+readme: README.md
+podspec: ValueCoding.podspec
+
+swift_version: 2.1
+xcodebuild-arguments: -scheme,ValueCoding-iOS
+
+custom_categories:
+  - name: ValueCoding
+    children:
+    - CodingType
+    - ValueCoding
+    - SequenceType
