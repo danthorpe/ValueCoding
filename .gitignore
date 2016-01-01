@@ -32,6 +32,6 @@ DerivedData
 
 Carthage/Build
 .fastlane/report.xml
-.fastlane/xcodebuild-data
+.ci/xcodebuild-data
 *.coverage.txt
 docs
