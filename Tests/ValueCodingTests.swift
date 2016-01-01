@@ -14,8 +14,8 @@ import XCTest
 class ValueCodingTests: XCTestCase {
 
     var item: Foo!
-
     var items: [Foo]!
+    var nested: [[Foo]]!
 
     override func setUp() {
         super.setUp()
@@ -38,6 +38,9 @@ class ValueCodingTests: XCTestCase {
             Foo(bar: "हैलो वर्ल्ड"),
             Foo(bar: "こんにちは世界"),
         ]
+        nested = [
+            items
+        ]
     }
 
     func test__single_archiving() {
@@ -51,6 +54,12 @@ class ValueCodingTests: XCTestCase {
         XCTAssertEqual(unarchived, items)
     }
 
+    func test__nested_archiving() {
+        let unarchived = Foo.decode(nested.encoded)
+        XCTAssertEqual(unarchived.count, 1)
+        XCTAssertEqual(unarchived[0], nested[0])
+    }
+
     func test__with_single_nil() {
         let empty: AnyObject? = .None
         XCTAssertNil(Foo.decode(empty))
@@ -58,6 +67,11 @@ class ValueCodingTests: XCTestCase {
 
     func test__with_sequence_nil() {
         let empty: [AnyObject]? = .None
+        XCTAssertTrue(Foo.decode(empty).isEmpty)
+    }
+
+    func test__with_nested_nil() {
+        let empty: [[AnyObject]]? = .None
         XCTAssertTrue(Foo.decode(empty).isEmpty)
     }
 
