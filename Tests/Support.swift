@@ -22,8 +22,8 @@ class FooCoder: NSObject, NSCoding, CodingType {
 
     let value: Foo
 
-    required init(_ v: Foo) {
-        value = v
+    required init(_ aValue: Foo) {
+        value = aValue
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -38,7 +38,6 @@ class FooCoder: NSObject, NSCoding, CodingType {
 
 extension Foo: Equatable { }
 
-func ==(a: Foo, b: Foo) -> Bool {
-    return a.bar == b.bar
+func == (lhs: Foo, rhs: Foo) -> Bool {
+    return lhs.bar == rhs.bar
 }
-
