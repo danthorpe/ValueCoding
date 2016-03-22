@@ -11,26 +11,26 @@ import Foundation
 // MARK: - CodingType
 
 /**
-A generic protocol for classes which can 
+A generic protocol for classes which can
 encode/decode value types.
 */
 public protocol CodingType {
 
-    /** 
+    /**
      The type of the composed value, ValueType
-     
+
      Bear in mind that there are no constraints on this
      type. However, in reality when working with generic
      types which require coding, it will be necessary to
      constrain your generic clauses like this:
-     
+
      ```swift
      func foo<T: ValueCoding where T.Coder.ValueType == T>()
      ```
-     
+
      - see: ValueCoding
     */
-    typealias ValueType
+    associatedtype ValueType
 
     /// The value type which is being encoded/decoded
     var value: ValueType { get }
@@ -49,10 +49,10 @@ public protocol ValueCoding {
 
     /**
      The Coder which implements CodingType
-     
+
      - see: CodingType
     */
-    typealias Coder: CodingType
+    associatedtype Coder: CodingType
 }
 
 // MARK: - Protocol Extensions
@@ -106,7 +106,7 @@ extension ValueCoding where Coder: NSCoding, Coder.ValueType == Self {
     For example
 
         let foos = Foo.decode(decoder.decodeObjectForKey("foos") as? [AnyObject])
-    
+
     - parameter objects: a `SequenceType` of `AnyObject`.
     - returns: the array of values which were able to be unarchived.
     */
@@ -126,11 +126,11 @@ extension ValueCoding where Coder: NSCoding, Coder.ValueType == Self {
 
     /**
     Encodes the value type into its Coder.
-    
-    Typically this would be used inside of 
+
+    Typically this would be used inside of
     `encodeWithCoder:` when the value is composed inside
     another `ValueCoding` or `NSCoding` type. For example:
-    
+
         encoder.encodeObject(foo.encoded, forKey: "foo")
 
     */
@@ -149,7 +149,7 @@ extension SequenceType where
 
     Typically this would be used inside of
     `encodeWithCoder:` when a sequence of values is
-    composed inside another `ValueCoding` or 
+    composed inside another `ValueCoding` or
     `NSCoding` type. For example:
 
         encoder.encodeObject(foos.encoded, forKey: "foos")
@@ -167,13 +167,10 @@ extension SequenceType where
     Generator.Element.Generator.Element.Coder.ValueType == Generator.Element.Generator.Element {
 
     /**
-     Encodes a sequence of sequences of value types into 
+     Encodes a sequence of sequences of value types into
      an array of arrays of coders.
      */
     public var encoded: [[Generator.Element.Generator.Element.Coder]] {
         return map { $0.encoded }
     }
 }
-
-
-

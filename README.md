@@ -1,8 +1,8 @@
 ![](https://raw.githubusercontent.com/danthorpe/ValueCoding/development/header.png)
 
 [![Build status](https://badge.buildkite.com/482fd5558d9ccf05b669c55f40450166033522f32314a1bbb2.svg)](https://buildkite.com/blindingskies/valuecoding)
-[![codecov.io](http://codecov.io/github/danthorpe/ValueCoding/coverage.svg?branch=development)](http://codecov.io/github/danthorpe/ValueCoding?branch=development)
-[![Cocoapods Compatible](https://img.shields.io/cocoapods/v/ValueCoding.svg)](https://img.shields.io/cocoapods/v/ValueCoding.svg)
+[![Coverage Status](https://coveralls.io/repos/github/danthorpe/ValueCoding/badge.svg?branch=feature%2FVCD-13_coveralls)](https://coveralls.io/github/danthorpe/ValueCoding?branch=development)
+[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/ValueCoding.svg)](https://img.shields.io/cocoapods/v/ValueCoding.svg)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Platform](https://img.shields.io/cocoapods/p/ValueCoding.svg?style=flat)](http://cocoadocs.org/docsets/ValueCoding)
 
@@ -79,7 +79,7 @@ let foos = Foo.decode(NSKeyedUnarchiver.unarchiveObjectWithData(data) as? [AnyOb
 
 The [Money](https://github.com/danthorpe/Money) framework contains more examples of implementing `ValueCoding`. Including the generic type [`FXTransactionCoder`](https://github.com/danthorpe/Money/blob/development/Money/Shared/FX/FX.swift#L467).
 
-The [YapDatabaseExtensions](https://github.com/danthorpe/YapDatabaseExtension) framework relies heavily on `ValueCoding`. For more examples of generic where constraints see its [Functional API](https://github.com/danthorpe/YapDatabaseExtensions/tree/development/YapDatabaseExtensions/Shared/Functional).
+The [YapDatabaseExtensions](https://github.com/danthorpe/YapDatabaseExtensions) framework relies heavily on `ValueCoding`. For more examples of generic where constraints see its [Functional API](https://github.com/danthorpe/YapDatabaseExtensions/tree/development/YapDatabaseExtensions/Shared/Functional).
 
 ### Installation
 ValueCoding builds as a cross platform (iOS, OS X, watchOS, tvOS) extension compatible framework. It is also available via CocoaPods
