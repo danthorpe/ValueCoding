@@ -1,5 +1,8 @@
 steps:
   -
+    name: ":muscle: Lint"
+    command: .ci/scripts/lint
+  -
     name: ":fastlane: Test Mac OS X"
     command: .ci/scripts/test-osx
     agents:
@@ -12,7 +15,7 @@ steps:
   -
     type: "waiter"
   -
-    name: ":codecov: Send Coverage"
+    name: ":muscle: Send Coverage"
     command: .ci/scripts/send-coverage
     agents:
       name: "$BUILDKITE_AGENT_META_DATA_NAME"
