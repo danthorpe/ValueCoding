@@ -79,4 +79,3 @@ class ValueCodingTests: XCTestCase {
         XCTAssertEqual(items.encoded.values, items)
     }
 }
-
