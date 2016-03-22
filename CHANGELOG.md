@@ -1,3 +1,7 @@
+# 1.3.0
+1. [[VCD-13](https://github.com/danthorpe/ValueCoding/pull/13)]: Switches test coverage reporting to Coveralls. Also adds SwiftLint rules into the project and CI.
+2. [[VCD-14](https://github.com/danthorpe/ValueCoding/pull/14)]: Updates to Swift 2.2 syntax. :)
+
 # 1.2.0
 1. [[VCD-9, VCD-10](https://github.com/danthorpe/ValueCoding/pull/10)]: Adds support for a single level of nesting inside SequenceType values. For example it is now possible to encode and decode `[[Foo]]` structures where `Foo` conforms to `ValueCoding`.
  
