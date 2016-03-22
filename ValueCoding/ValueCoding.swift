@@ -30,7 +30,7 @@ public protocol CodingType {
      
      - see: ValueCoding
     */
-    typealias ValueType
+    associatedtype ValueType
 
     /// The value type which is being encoded/decoded
     var value: ValueType { get }
@@ -52,7 +52,7 @@ public protocol ValueCoding {
      
      - see: CodingType
     */
-    typealias Coder: CodingType
+    associatedtype Coder: CodingType
 }
 
 // MARK: - Protocol Extensions
