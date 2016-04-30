@@ -72,6 +72,32 @@ extension CodingType where ValueType: ValueCoding, ValueType.Coder == Self {
     }
 }
 
+/**
+ Objective-C bridging support. Allows for use of value types in `NSArray` and company.
+ */
+extension ValueCoding where Coder: NSCoding, Coder.ValueType == Self {
+    static func _isBridgedToObjectiveC() -> Bool {
+        return true
+    }
+    
+    static func _getObjectiveCType() -> Any.Type {
+        return Coder.self
+    }
+    
+    static func _forceBridgeFromObjectiveC(source: Coder, inout result: Self?) {
+        result = source.value
+    }
+    
+    static func _conditionallyBridgeFromObjectiveC(source: Coder, inout result: Self?) -> Bool {
+        result = source.value
+        return true
+    }
+    
+    func _bridgeToObjectiveC() -> Coder {
+        return encoded
+    }
+}
+
 extension SequenceType where
     Generator.Element: CodingType {
 
