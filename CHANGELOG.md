@@ -1,3 +1,6 @@
+# 1.3.1
+1. [[VCD-16](https://github.com/danthorpe/ValueCoding/pull/16)]: Adds support for Objective-C bridging. Thanks to [@aranasaurus](https://github.com/aranasaurus) - sorry it took so long to get it released. Completely dropped off my radar!
+
 # 1.3.0
 1. [[VCD-13](https://github.com/danthorpe/ValueCoding/pull/13)]: Switches test coverage reporting to Coveralls. Also adds SwiftLint rules into the project and CI.
 2. [[VCD-14](https://github.com/danthorpe/ValueCoding/pull/14)]: Updates to Swift 2.2 syntax. :)
