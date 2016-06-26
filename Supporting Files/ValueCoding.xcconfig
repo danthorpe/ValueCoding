@@ -1,0 +1,16 @@
+//
+//  ValueCoding.xcconfig
+//  ValueCoding
+//
+//  Created by Daniel Thorpe on 26/06/2016.
+//
+//
+
+VALUE_CODING_VERSION = 1.4.0
+SWIFT_VERSION = 2.3
+
+DEFINES_MODULE = YES
+INFOPLIST_FILE = $(SRCROOT)/Supporting Files/Info.plist
+PRODUCT_BUNDLE_IDENTIFIER = me.danthorpe.ValueCoding
+PRODUCT_NAME = ValueCoding
+APPLICATION_EXTENSION_API_ONLY = YES
