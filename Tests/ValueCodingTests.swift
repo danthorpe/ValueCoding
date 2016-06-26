@@ -61,17 +61,17 @@ class ValueCodingTests: XCTestCase {
     }
 
     func test__with_single_nil() {
-        let empty: AnyObject? = .None
+        let empty: AnyObject? = .none
         XCTAssertNil(Foo.decode(empty))
     }
 
     func test__with_sequence_nil() {
-        let empty: [AnyObject]? = .None
+        let empty: [AnyObject]? = .none
         XCTAssertTrue(Foo.decode(empty).isEmpty)
     }
 
     func test__with_nested_nil() {
-        let empty: [[AnyObject]]? = .None
+        let empty: [[AnyObject]]? = .none
         XCTAssertTrue(Foo.decode(empty).isEmpty)
     }
 

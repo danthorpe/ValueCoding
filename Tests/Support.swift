@@ -27,12 +27,12 @@ class FooCoder: NSObject, NSCoding, CodingType {
     }
 
     required init?(coder aDecoder: NSCoder) {
-        let bar = aDecoder.decodeObjectForKey(Keys.Bar.rawValue) as? String
+        let bar = aDecoder.decodeObject(forKey: Keys.Bar.rawValue) as? String
         value = Foo(bar: bar!)
     }
 
-    func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(value.bar, forKey: Keys.Bar.rawValue)
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(value.bar, forKey: Keys.Bar.rawValue)
     }
 }
 
