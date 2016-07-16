@@ -35,3 +35,4 @@ Carthage/Build
 .ci/xcodebuild-data
 *.coverage.txt
 docs
+/.fastlane/README.md
