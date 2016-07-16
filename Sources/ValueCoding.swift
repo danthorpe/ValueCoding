@@ -52,21 +52,6 @@ public protocol ValueCoding {
 
 // MARK: - Protocol Extensions
 
-internal extension CodingType where Value: ValueCoding {
-
-    static func decode(_ object: AnyObject?) -> Value? {
-        return (object as? Self)?.value
-    }
-
-    static func decode<S: Sequence where S.Iterator.Element: AnyObject>(_ objects: S?) -> [Value] {
-        return objects?.flatMap(decode) ?? []
-    }
-
-    static func decode<S: Sequence where S.Iterator.Element: Sequence, S.Iterator.Element.Iterator.Element: AnyObject>(_ objects: S?) -> [[Value]] {
-        return objects?.flatMap(decode) ?? []
-    }
-}
-
 public extension Sequence where Iterator.Element: CodingType {
 
     /// Access the values from a sequence of coders.
@@ -92,7 +77,7 @@ public extension ValueCoding where Coder: NSCoding, Coder.Value == Self {
     - returns: an optional `Self`
     */
     static func decode(_ object: AnyObject?) -> Self? {
-        return Coder.decode(object)
+        return (object as? Coder)?.value
     }
 
     /**
@@ -105,7 +90,7 @@ public extension ValueCoding where Coder: NSCoding, Coder.Value == Self {
     - returns: the array of values which were able to be unarchived.
     */
     static func decode<S: Sequence where S.Iterator.Element: AnyObject>(_ objects: S?) -> [Self] {
-        return Coder.decode(objects)
+        return objects?.flatMap(Self.decode) ?? []
     }
 
     /**
@@ -115,7 +100,7 @@ public extension ValueCoding where Coder: NSCoding, Coder.Value == Self {
      - returns: the array of arrays of values which were able to be unarchived.
      */
     static func decode<S: Sequence where S.Iterator.Element: Sequence, S.Iterator.Element.Iterator.Element: AnyObject>(_ objects: S?) -> [[Self]] {
-        return Coder.decode(objects)
+        return objects?.flatMap(Self.decode) ?? []
     }
 
     /**
