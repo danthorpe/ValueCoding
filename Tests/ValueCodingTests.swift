@@ -49,6 +49,11 @@ class ValueCodingTests: XCTestCase {
         XCTAssertEqual(unarchived!, item)
     }
 
+    func test__single_incorrect_archiving() {
+        let unarchived = Baz.decode(item.encoded)
+        XCTAssertNil(unarchived)
+    }
+
     func test__multiple_archiving() {
         let unarchived = Foo.decode(items.encoded)
         XCTAssertEqual(unarchived, items)

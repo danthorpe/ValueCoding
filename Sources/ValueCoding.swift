@@ -10,33 +10,28 @@ import Foundation
 
 // MARK: - CodingType
 
+public protocol CodedValue {
+
+    /**
+     The type of the composed value, Value
+
+     - see: ValueCoding
+     */
+    associatedtype Value
+
+    /// The value type which was coded
+    var value: Value { get }
+}
+
+
 /**
 A generic protocol for classes which can
 encode/decode value types.
 */
-public protocol CodingType {
-
-    /**
-     The type of the composed value, ValueType
-
-     Bear in mind that there are no constraints on this
-     type. However, in reality when working with generic
-     types which require coding, it will be necessary to
-     constrain your generic clauses like this:
-
-     ```swift
-     func foo<T: ValueCoding where T.Coder.ValueType == T>()
-     ```
-
-     - see: ValueCoding
-    */
-    associatedtype ValueType
-
-    /// The value type which is being encoded/decoded
-    var value: ValueType { get }
+public protocol CodingType: CodedValue {
 
     /// Required initializer receiving the wrapped value type.
-    init(_: ValueType)
+    init(_: Value)
 }
 
 // MARK: - ValueCoding
@@ -57,30 +52,25 @@ public protocol ValueCoding {
 
 // MARK: - Protocol Extensions
 
+internal extension CodingType where Value: ValueCoding {
 
-
-extension CodingType where
-    ValueType: ValueCoding,
-    ValueType.Coder == Self {
-
-    internal static func decode(_ object: AnyObject?) -> ValueType? {
+    static func decode(_ object: AnyObject?) -> Value? {
         return (object as? Self)?.value
     }
 
-    internal static func decode<S: Sequence where S.Iterator.Element: AnyObject>(_ objects: S?) -> [ValueType] {
+    static func decode<S: Sequence where S.Iterator.Element: AnyObject>(_ objects: S?) -> [Value] {
         return objects?.flatMap(decode) ?? []
     }
 
-    internal static func decode<S: Sequence where S.Iterator.Element: Sequence, S.Iterator.Element.Iterator.Element: AnyObject>(_ objects: S?) -> [[ValueType]] {
+    static func decode<S: Sequence where S.Iterator.Element: Sequence, S.Iterator.Element.Iterator.Element: AnyObject>(_ objects: S?) -> [[Value]] {
         return objects?.flatMap(decode) ?? []
     }
 }
 
-extension Sequence where
-    Iterator.Element: CodingType {
+public extension Sequence where Iterator.Element: CodingType {
 
     /// Access the values from a sequence of coders.
-    public var values: [Iterator.Element.ValueType] {
+    var values: [Iterator.Element.Value] {
         return map { $0.value }
     }
 }
@@ -89,7 +79,7 @@ extension Sequence where
 Static methods for decoding `AnyObject` to Self, and returning encoded object
 of Self.
 */
-extension ValueCoding where Coder: NSCoding, Coder.ValueType == Self {
+public extension ValueCoding where Coder: NSCoding, Coder.Value == Self {
 
     /**
     Decodes the value from a single decoder, if possible.
@@ -101,7 +91,7 @@ extension ValueCoding where Coder: NSCoding, Coder.ValueType == Self {
     be of `Coder` type.
     - returns: an optional `Self`
     */
-    public static func decode(_ object: AnyObject?) -> Self? {
+    static func decode(_ object: AnyObject?) -> Self? {
         return Coder.decode(object)
     }
 
@@ -114,7 +104,7 @@ extension ValueCoding where Coder: NSCoding, Coder.ValueType == Self {
     - parameter objects: a `SequenceType` of `AnyObject`.
     - returns: the array of values which were able to be unarchived.
     */
-    public static func decode<S: Sequence where S.Iterator.Element: AnyObject>(_ objects: S?) -> [Self] {
+    static func decode<S: Sequence where S.Iterator.Element: AnyObject>(_ objects: S?) -> [Self] {
         return Coder.decode(objects)
     }
 
@@ -124,7 +114,7 @@ extension ValueCoding where Coder: NSCoding, Coder.ValueType == Self {
      - parameter objects: a `SequenceType` of `SequenceType` of `AnyObject`.
      - returns: the array of arrays of values which were able to be unarchived.
      */
-    public static func decode<S: Sequence where S.Iterator.Element: Sequence, S.Iterator.Element.Iterator.Element: AnyObject>(_ objects: S?) -> [[Self]] {
+    static func decode<S: Sequence where S.Iterator.Element: Sequence, S.Iterator.Element.Iterator.Element: AnyObject>(_ objects: S?) -> [[Self]] {
         return Coder.decode(objects)
     }
 
@@ -138,7 +128,7 @@ extension ValueCoding where Coder: NSCoding, Coder.ValueType == Self {
         encoder.encodeObject(foo.encoded, forKey: "foo")
 
     */
-    public var encoded: Coder {
+    var encoded: Coder {
         return Coder(self)
     }
 }
@@ -146,7 +136,7 @@ extension ValueCoding where Coder: NSCoding, Coder.ValueType == Self {
 extension Sequence where
     Iterator.Element: ValueCoding,
     Iterator.Element.Coder: NSCoding,
-    Iterator.Element.Coder.ValueType == Iterator.Element {
+    Iterator.Element.Coder.Value == Iterator.Element {
 
     /**
     Encodes the sequence of value types into an array of coders.
@@ -168,7 +158,7 @@ extension Sequence where
     Iterator.Element: Sequence,
     Iterator.Element.Iterator.Element: ValueCoding,
     Iterator.Element.Iterator.Element.Coder: NSCoding,
-    Iterator.Element.Iterator.Element.Coder.ValueType == Iterator.Element.Iterator.Element {
+    Iterator.Element.Iterator.Element.Coder.Value == Iterator.Element.Iterator.Element {
 
     /**
      Encodes a sequence of sequences of value types into
