@@ -15,7 +15,7 @@ platform :ios do
     	scan(
     		project: "ValueCoding.xcodeproj",
 			scheme: "ValueCoding",
-			destination: "platform=iOS Simulator,OS=10.0,name=iPhone 6s"
+			device: "iPhone 6s"
 	    )
 
 		slather(
@@ -35,7 +35,7 @@ platform :mac do
     	scan(
     		project: "ValueCoding.xcodeproj",
 			scheme: "ValueCoding",
-			destination: "platform=macOS"
+			device: "My Mac"
 	    )
 
 	end
