@@ -17,7 +17,7 @@ steps:
     command: .ci/scripts/test-ios
     agents:
       iOS-Simulator: true
-      name: "$BUILDKITE_AGENT_META_DATA_SWIFT"
+      swift: "$BUILDKITE_AGENT_META_DATA_SWIFT"
     env:
       FL_SLATHER_BUILDKITE_ENABLED: true
       FL_SLATHER_COVERALLS_ENABLED: true
