@@ -1,9 +1,7 @@
 //
-//  ValueCoding.h
 //  ValueCoding
 //
-//  Created by Daniel Thorpe on 11/10/2015.
-//
+//  Copyright © 2016 Daniel Thorpe. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
