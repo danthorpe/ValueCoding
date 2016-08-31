@@ -19,8 +19,6 @@ platform :ios do
       		code_coverage: true
 	    )
 
-		sh("bash <(curl -s https://codecov.io/bash) -J 'ValueCoding'")
-    
 	end
 end
 
