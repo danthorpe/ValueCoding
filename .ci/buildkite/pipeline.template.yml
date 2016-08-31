@@ -1,21 +1,23 @@
 steps:
   -
-    name: ":muscle: Lint"
+    name: "Lint"
     command: .ci/scripts/lint
+    agents:
+      iOS-Simulator: false       
+      swift: "$BUILDKITE_AGENT_META_DATA_SWIFT"
+    
   -
-    name: ":fastlane: Test Mac OS X"
+    name: "Mac"
     command: .ci/scripts/test-osx
     agents:
-      name: "$BUILDKITE_AGENT_META_DATA_NAME"
+      iOS-Simulator: false       
+      swift: "$BUILDKITE_AGENT_META_DATA_SWIFT"
   -
-    name: ":fastlane: Test iOS"
+    name: "iOS"
     command: .ci/scripts/test-ios
     agents:
-      name: "$BUILDKITE_AGENT_META_DATA_NAME"
-  -
-    type: "waiter"
-  -
-    name: ":muscle: Send Coverage"
-    command: .ci/scripts/send-coverage
-    agents:
-      name: "$BUILDKITE_AGENT_META_DATA_NAME"
+      iOS-Simulator: true
+      name: "$BUILDKITE_AGENT_META_DATA_SWIFT"
+    env:
+      FL_SLATHER_BUILDKITE_ENABLED: true
+      FL_SLATHER_COVERALLS_ENABLED: true

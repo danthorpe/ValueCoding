@@ -9,30 +9,34 @@ end
 
 platform :ios do
 
-  desc "Runs all the tests"
-  lane :test do
+	desc "Runs all the tests"
+	lane :test do
     
-    scan(
-      scheme: "ValueCoding-iOS",
-      output_directory: ".ci/xcodebuild-data/",
-      xcargs: "-derivedDataPath .ci/xcodebuild-data/"
-    )
-    
-  end
+    	scan(
+    		project: "ValueCoding.xcodeproj",
+			scheme: "ValueCoding",
+			destination: "platform=iOS Simulator,OS=10.0,name=iPhone 6s"
+	    )
 
+		slather(
+			proj: "ValueCoding.xcodeproj",
+	    	scheme: "ValueCoding",
+	    	use_bundle_exec: true    	
+    	)
+    
+	end
 end
 
 platform :mac do
   
-  desc "Runs all the tests"
-  lane :test do
+	desc "Runs all the tests"
+	lane :test do
 
-    scan(
-      scheme: "ValueCoding-OSX",
-      output_directory: ".ci/xcodebuild-data/",
-      xcargs: "-derivedDataPath .ci/xcodebuild-data/"
-    )
+    	scan(
+    		project: "ValueCoding.xcodeproj",
+			scheme: "ValueCoding",
+			destination: "platform=macOS"
+	    )
 
-  end
-  
+	end
 end
