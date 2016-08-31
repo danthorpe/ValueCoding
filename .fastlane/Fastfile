@@ -18,6 +18,8 @@ platform :ios do
       		destination: "platform=iOS Simulator,OS=9.3,name=iPhone 6s",
       		code_coverage: true
 	    )
+
+		sh("bash <(curl -s https://codecov.io/bash) -J 'ValueCoding'")
     
 	end
 end
