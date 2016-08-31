@@ -26,6 +26,7 @@ APPLICATION_EXTENSION_API_ONLY = $(APPLICATION_EXTENSION_API_ONLY_$(WRAPPER_EXTE
 // Build Settings
 SWIFT_VERSION = 2.2
 SUPPORTED_PLATFORMS = macosx iphoneos appletvos watchos appletvsimulator iphonesimulator watchsimulator
+CLANG_ENABLE_CODE_COVERAGE = YES
 
 // Code Signing
 CODE_SIGN_IDENTITY = -

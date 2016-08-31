@@ -18,12 +18,6 @@ platform :ios do
       		destination: "platform=iOS Simulator,OS=9.3,name=iPhone 6s",
       		code_coverage: true
 	    )
-
-		slather(
-			proj: "ValueCoding.xcodeproj",
-	    	scheme: "ValueCoding",
-	    	use_bundle_exec: true    	
-    	)
     
 	end
 end
