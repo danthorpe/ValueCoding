@@ -4,20 +4,20 @@ steps:
     command: .ci/scripts/lint
     agents:
       iOS-Simulator: false       
-      swift: "$BUILDKITE_AGENT_META_DATA_SWIFT"
+      xcode: "$BUILDKITE_AGENT_META_DATA_XCODE"
     
   -
     name: "Mac"
     command: .ci/scripts/test-osx
     agents:
       iOS-Simulator: false       
-      swift: "$BUILDKITE_AGENT_META_DATA_SWIFT"
+      xcode: "$BUILDKITE_AGENT_META_DATA_XCODE"
   -
     name: "iOS"
     command: .ci/scripts/test-ios
     agents:
       iOS-Simulator: true
-      swift: "$BUILDKITE_AGENT_META_DATA_SWIFT"
+      xcode: "$BUILDKITE_AGENT_META_DATA_XCODE"
     env:
       FL_SLATHER_BUILDKITE_ENABLED: true
       FL_SLATHER_COVERALLS_ENABLED: true
