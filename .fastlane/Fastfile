@@ -15,7 +15,7 @@ platform :ios do
     	scan(
     		project: "ValueCoding.xcodeproj",
 			scheme: "ValueCoding",
-      		destination: "platform=iOS Simulator,OS=10.0,name=iPhone 6s",
+      		destination: "platform=iOS Simulator,OS=10.0,name=iPhone 5s",
       		code_coverage: true
 	    )
 
