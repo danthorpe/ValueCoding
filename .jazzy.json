@@ -3,9 +3,9 @@
 	"author_url": "http://danthorpe.me",
 	"github_url": "https://github.com/danthorpe/ValueCoding",
 	"module": "ValueCoding",
-	"module_version": "1.4.0",
+	"module_version": "1.5.0",
 	"readme": "README.md",
-	"swift_version": "2.2",	
+	"swift_version": "2.3",	
 	"xcodebuild_arguments": [
 		"-project", "ValueCoding.xcodeproj", 
 		"-scheme", "ValueCoding"
