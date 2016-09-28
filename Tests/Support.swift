@@ -14,7 +14,7 @@ struct Foo: ValueCoding {
     let bar: String
 }
 
-class FooCoder: NSObject, NSCoding, CodingType {
+class FooCoder: NSObject, NSCoding, CodingProtocol {
 
     enum Keys: String {
         case Bar = "bar"
@@ -27,12 +27,12 @@ class FooCoder: NSObject, NSCoding, CodingType {
     }
 
     required init?(coder aDecoder: NSCoder) {
-        let bar = aDecoder.decodeObjectForKey(Keys.Bar.rawValue) as? String
+        let bar = aDecoder.decodeObject(forKey: Keys.Bar.rawValue) as? String
         value = Foo(bar: bar!)
     }
 
-    func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(value.bar, forKey: Keys.Bar.rawValue)
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(value.bar, forKey: Keys.Bar.rawValue)
     }
 }
 
@@ -40,4 +40,37 @@ extension Foo: Equatable { }
 
 func == (lhs: Foo, rhs: Foo) -> Bool {
     return lhs.bar == rhs.bar
+}
+
+struct Baz: ValueCoding {
+    typealias Coder = BazCoder
+    let bat: String
+}
+
+extension Baz: Equatable { }
+
+func == (lhs: Baz, rhs: Baz) -> Bool {
+    return lhs.bat == rhs.bat
+}
+
+class BazCoder: NSObject, NSCoding, CodingProtocol {
+
+    enum Keys: String {
+        case Bat = "bat"
+    }
+
+    let value: Baz
+
+    required init(_ aValue: Baz) {
+        value = aValue
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        let bat = aDecoder.decodeObject(forKey: Keys.Bat.rawValue) as? String
+        value = Baz(bat: bat!)
+    }
+
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(value.bat, forKey: Keys.Bat.rawValue)
+    }
 }

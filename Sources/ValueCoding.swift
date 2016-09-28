@@ -8,35 +8,30 @@
 
 import Foundation
 
-// MARK: - CodingType
+// MARK: - CodingProtocol
+
+public protocol CodedValue {
+
+    /**
+     The type of the composed value, Value
+
+     - see: ValueCoding
+     */
+    associatedtype Value
+
+    /// The value type which was coded
+    var value: Value { get }
+}
+
 
 /**
 A generic protocol for classes which can
 encode/decode value types.
 */
-public protocol CodingType {
-
-    /**
-     The type of the composed value, ValueType
-
-     Bear in mind that there are no constraints on this
-     type. However, in reality when working with generic
-     types which require coding, it will be necessary to
-     constrain your generic clauses like this:
-
-     ```swift
-     func foo<T: ValueCoding where T.Coder.ValueType == T>()
-     ```
-
-     - see: ValueCoding
-    */
-    associatedtype ValueType
-
-    /// The value type which is being encoded/decoded
-    var value: ValueType { get }
+public protocol CodingProtocol: CodedValue {
 
     /// Required initializer receiving the wrapped value type.
-    init(_: ValueType)
+    init(_: Value)
 }
 
 // MARK: - ValueCoding
@@ -48,35 +43,19 @@ coding.
 public protocol ValueCoding {
 
     /**
-     The Coder which implements CodingType
+     The Coder which implements CodingProtocol
 
-     - see: CodingType
+     - see: CodingProtocol
     */
-    associatedtype Coder: CodingType
+    associatedtype Coder: CodingProtocol
 }
 
 // MARK: - Protocol Extensions
 
-extension CodingType where ValueType: ValueCoding, ValueType.Coder == Self {
-
-    internal static func decode(object: AnyObject?) -> ValueType? {
-        return (object as? Self)?.value
-    }
-
-    internal static func decode<S: SequenceType where S.Generator.Element: AnyObject>(objects: S?) -> [ValueType] {
-        return objects?.flatMap(decode) ?? []
-    }
-
-    internal static func decode<S: SequenceType where S.Generator.Element: SequenceType, S.Generator.Element.Generator.Element: AnyObject>(objects: S?) -> [[ValueType]] {
-        return objects?.flatMap(decode) ?? []
-    }
-}
-
-extension SequenceType where
-    Generator.Element: CodingType {
+public extension Sequence where Iterator.Element: CodingProtocol {
 
     /// Access the values from a sequence of coders.
-    public var values: [Generator.Element.ValueType] {
+    var values: [Iterator.Element.Value] {
         return map { $0.value }
     }
 }
@@ -85,7 +64,7 @@ extension SequenceType where
 Static methods for decoding `AnyObject` to Self, and returning encoded object
 of Self.
 */
-extension ValueCoding where Coder: NSCoding, Coder.ValueType == Self {
+public extension ValueCoding where Coder: NSCoding, Coder.Value == Self {
 
     /**
     Decodes the value from a single decoder, if possible.
@@ -97,8 +76,8 @@ extension ValueCoding where Coder: NSCoding, Coder.ValueType == Self {
     be of `Coder` type.
     - returns: an optional `Self`
     */
-    public static func decode(object: AnyObject?) -> Self? {
-        return Coder.decode(object)
+    static func decode(_ object: AnyObject?) -> Self? {
+        return (object as? Coder)?.value
     }
 
     /**
@@ -110,8 +89,8 @@ extension ValueCoding where Coder: NSCoding, Coder.ValueType == Self {
     - parameter objects: a `SequenceType` of `AnyObject`.
     - returns: the array of values which were able to be unarchived.
     */
-    public static func decode<S: SequenceType where S.Generator.Element: AnyObject>(objects: S?) -> [Self] {
-        return Coder.decode(objects)
+    static func decode<S: Sequence>(_ objects: S?) -> [Self] where S.Iterator.Element: AnyObject {
+        return objects?.flatMap(Self.decode) ?? []
     }
 
     /**
@@ -120,8 +99,8 @@ extension ValueCoding where Coder: NSCoding, Coder.ValueType == Self {
      - parameter objects: a `SequenceType` of `SequenceType` of `AnyObject`.
      - returns: the array of arrays of values which were able to be unarchived.
      */
-    public static func decode<S: SequenceType where S.Generator.Element: SequenceType, S.Generator.Element.Generator.Element: AnyObject>(objects: S?) -> [[Self]] {
-        return Coder.decode(objects)
+    static func decode<S: Sequence>(_ objects: S?) -> [[Self]] where S.Iterator.Element: Sequence, S.Iterator.Element.Iterator.Element: AnyObject {
+        return objects?.flatMap(Self.decode) ?? []
     }
 
     /**
@@ -134,15 +113,15 @@ extension ValueCoding where Coder: NSCoding, Coder.ValueType == Self {
         encoder.encodeObject(foo.encoded, forKey: "foo")
 
     */
-    public var encoded: Coder {
+    var encoded: Coder {
         return Coder(self)
     }
 }
 
-extension SequenceType where
-    Generator.Element: ValueCoding,
-    Generator.Element.Coder: NSCoding,
-    Generator.Element.Coder.ValueType == Generator.Element {
+extension Sequence where
+    Iterator.Element: ValueCoding,
+    Iterator.Element.Coder: NSCoding,
+    Iterator.Element.Coder.Value == Iterator.Element {
 
     /**
     Encodes the sequence of value types into an array of coders.
@@ -155,22 +134,22 @@ extension SequenceType where
         encoder.encodeObject(foos.encoded, forKey: "foos")
 
     */
-    public var encoded: [Generator.Element.Coder] {
+    public var encoded: [Iterator.Element.Coder] {
         return map { $0.encoded }
     }
 }
 
-extension SequenceType where
-    Generator.Element: SequenceType,
-    Generator.Element.Generator.Element: ValueCoding,
-    Generator.Element.Generator.Element.Coder: NSCoding,
-    Generator.Element.Generator.Element.Coder.ValueType == Generator.Element.Generator.Element {
+extension Sequence where
+    Iterator.Element: Sequence,
+    Iterator.Element.Iterator.Element: ValueCoding,
+    Iterator.Element.Iterator.Element.Coder: NSCoding,
+    Iterator.Element.Iterator.Element.Coder.Value == Iterator.Element.Iterator.Element {
 
     /**
      Encodes a sequence of sequences of value types into
      an array of arrays of coders.
      */
-    public var encoded: [[Generator.Element.Generator.Element.Coder]] {
+    public var encoded: [[Iterator.Element.Iterator.Element.Coder]] {
         return map { $0.encoded }
     }
 }
