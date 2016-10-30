@@ -1,3 +1,6 @@
+# 2.1.0
+This is for Xcode 8.1, Swift 3.0.1
+
 # 2.0.0
 This is the Swift 3.0 compatible version.
 
