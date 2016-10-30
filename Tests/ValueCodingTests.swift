@@ -55,12 +55,12 @@ class ValueCodingTests: XCTestCase {
     }
 
     func test__multiple_archiving() {
-        let unarchived = Foo.decode(items.encoded)
+        let unarchived: [Foo] = Foo.decode(items.encoded)
         XCTAssertEqual(unarchived, items)
     }
 
     func test__nested_archiving() {
-        let unarchived = Foo.decode(nested.encoded)
+        let unarchived: [[Foo]] = Foo.decode(nested.encoded)
         XCTAssertEqual(unarchived.count, 1)
         XCTAssertEqual(unarchived[0], nested[0])
     }
