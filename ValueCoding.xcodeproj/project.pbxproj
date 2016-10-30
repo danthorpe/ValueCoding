@@ -27,6 +27,7 @@
 /* Begin PBXFileReference section */
 		658A7B5C1D776B7600F897C8 /* ValueCoding.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ValueCoding.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		658A7B651D776B7600F897C8 /* ValueCodingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ValueCodingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		65A3B8821DC659FE0042BB95 /* Warnings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Warnings.xcconfig; sourceTree = "<group>"; };
 		65CF6F511D776BBC004B3503 /* ValueCoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueCoding.swift; sourceTree = "<group>"; };
 		65CF6F531D776BBC004B3503 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65CF6F541D776BBC004B3503 /* ValueCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValueCoding.h; sourceTree = "<group>"; };
@@ -60,8 +61,7 @@
 			children = (
 				65CF6F501D776BBC004B3503 /* Sources */,
 				65CF6F5A1D77744D004B3503 /* Tests */,
-				65CF6F521D776BBC004B3503 /* Supporting Files */,
-				658A7B5D1D776B7600F897C8 /* Products */,
+				65A3B8811DC659EA0042BB95 /* ... */,
 			);
 			sourceTree = "<group>";
 		};
@@ -72,6 +72,15 @@
 				658A7B651D776B7600F897C8 /* ValueCodingTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		65A3B8811DC659EA0042BB95 /* ... */ = {
+			isa = PBXGroup;
+			children = (
+				65CF6F521D776BBC004B3503 /* Supporting Files */,
+				658A7B5D1D776B7600F897C8 /* Products */,
+			);
+			name = ...;
 			sourceTree = "<group>";
 		};
 		65CF6F501D776BBC004B3503 /* Sources */ = {
@@ -89,6 +98,7 @@
 				65CF6F531D776BBC004B3503 /* Info.plist */,
 				65CF6F591D77704D004B3503 /* ValueCoding.xcconfig */,
 				65CF6F581D776BD5004B3503 /* Version.xcconfig */,
+				65A3B8821DC659FE0042BB95 /* Warnings.xcconfig */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -159,7 +169,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				TargetAttributes = {
 					658A7B5B1D776B7600F897C8 = {
 						CreatedOnToolsVersion = 8.0;
@@ -241,6 +251,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 65CF6F591D77704D004B3503 /* ValueCoding.xcconfig */;
 			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
 			};
 			name = Debug;
 		};
