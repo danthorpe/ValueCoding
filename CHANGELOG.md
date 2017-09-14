@@ -1,5 +1,10 @@
+# 3.0.0
+This is for Xcode 9, Swift 4.0.
+
+**Please note that _ValueCoding_ is marked as deprecated, as it has been rendered obsolete by Apple introducing the `Codable` protocol. The project has been mothballed, and will no longer be maintained.**
+
 # 2.2.0
-This is for Xcode 9, Swift 3.2
+This is for Xcode 9, Swift 3.2.
 
 # 2.1.0
 This is for Xcode 8.1, Swift 3.0.1

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name              = "ValueCoding"
-  s.version           = "2.2.0"
+  s.version           = "3.0.0"
   s.summary           = "Swift protocols for encoding/decoding value types."
   s.description       = <<-DESC
 

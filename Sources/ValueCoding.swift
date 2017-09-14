@@ -12,6 +12,7 @@ import Foundation
 
 // MARK: - CodingProtocol
 
+@available(*, deprecated, message: "ValueCoding is deprecated as it has been rendered obsolete by Codable in Swift 4.")
 public protocol CodedValue {
 
     /**
@@ -29,6 +30,7 @@ public protocol CodedValue {
 A generic protocol for classes which can
 encode/decode value types.
 */
+@available(*, deprecated, message: "ValueCoding is deprecated as it has been rendered obsolete by Codable in Swift 4.")
 public protocol CodingProtocol: CodedValue {
 
     /// Required initializer receiving the wrapped value type.
@@ -41,6 +43,7 @@ public protocol CodingProtocol: CodedValue {
 A generic protocol for value types which require
 coding.
 */
+@available(*, deprecated, message: "ValueCoding is deprecated as it has been rendered obsolete by Codable in Swift 4.")
 public protocol ValueCoding {
 
     /**
@@ -53,6 +56,7 @@ public protocol ValueCoding {
 
 // MARK: - Protocol Extensions
 
+@available(*, deprecated, message: "ValueCoding is deprecated as it has been rendered obsolete by Codable in Swift 4.")
 public extension Sequence where Iterator.Element: CodingProtocol {
 
     /// Access the values from a sequence of coders.
@@ -65,6 +69,7 @@ public extension Sequence where Iterator.Element: CodingProtocol {
 Static methods for decoding `AnyObject` to Self, and returning encoded object
 of Self.
 */
+@available(*, deprecated, message: "ValueCoding is deprecated as it has been rendered obsolete by Codable in Swift 4.")
 public extension ValueCoding where Coder: NSCoding, Coder.Value == Self {
 
     /**
@@ -119,6 +124,7 @@ public extension ValueCoding where Coder: NSCoding, Coder.Value == Self {
     }
 }
 
+@available(*, deprecated, message: "ValueCoding is deprecated as it has been rendered obsolete by Codable in Swift 4.")
 extension Sequence where
     Iterator.Element: ValueCoding,
     Iterator.Element.Coder: NSCoding,
@@ -140,6 +146,7 @@ extension Sequence where
     }
 }
 
+@available(*, deprecated, message: "ValueCoding is deprecated as it has been rendered obsolete by Codable in Swift 4.")
 extension Sequence where
     Iterator.Element: Sequence,
     Iterator.Element.Iterator.Element: ValueCoding,
