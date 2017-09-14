@@ -19,7 +19,7 @@ struct Foo: ValueCoding {
 class FooCoder: NSObject, NSCoding, CodingProtocol {
 
     enum Keys: String {
-        case bar = "bar"
+        case bar
     }
 
     let value: Foo
@@ -58,7 +58,7 @@ func == (lhs: Baz, rhs: Baz) -> Bool {
 class BazCoder: NSObject, NSCoding, CodingProtocol {
 
     enum Keys: String {
-        case Bat = "bat"
+        case baz
     }
 
     let value: Baz
@@ -68,11 +68,11 @@ class BazCoder: NSObject, NSCoding, CodingProtocol {
     }
 
     required init?(coder aDecoder: NSCoder) {
-        let bat = aDecoder.decodeObject(forKey: Keys.Bat.rawValue) as? String
+        let bat = aDecoder.decodeObject(forKey: Keys.baz.rawValue) as? String
         value = Baz(bat: bat!)
     }
 
     func encode(with aCoder: NSCoder) {
-        aCoder.encode(value.bat, forKey: Keys.Bat.rawValue)
+        aCoder.encode(value.bat, forKey: Keys.baz.rawValue)
     }
 }
