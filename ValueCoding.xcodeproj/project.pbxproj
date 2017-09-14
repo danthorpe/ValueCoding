@@ -169,7 +169,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0900;
 				TargetAttributes = {
 					658A7B5B1D776B7600F897C8 = {
 						CreatedOnToolsVersion = 8.0;
