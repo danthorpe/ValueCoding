@@ -8,6 +8,8 @@
 
 # ValueCoding
 
+**Please note that _ValueCoding_ is marked as deprecated, as it has been rendered obsolete by Apple introducing the `Codable` protocol with Swift 4.0. The project has been mothballed, and will no longer be maintained.**
+
 ValueCoding is a simple pair of protocols to support the coding of Swift value types.
 
 It works by allowing a value type, which must conform to `ValueCoding` to define via a typealias its *coder*. The coder is another type which implements the `CoderType` protocol. This type will typically be an `NSObject` which implements `NSCoding` and is an adaptor which is responsible for encoding and decoding the properties of the value.

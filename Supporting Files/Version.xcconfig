@@ -1,1 +1,11 @@
-VALUECODING_VERSION = 2.2.0
+//
+// ValueCoding
+// File created on 11/10/2015.
+//
+// Copyright (c) 2015-2017 Daniel Thorpe
+//
+// ValueCoding is licensed under the MIT License. Read the full license at
+// https://github.com/danthorpe/ValueCoding/blob/master/LICENSE
+//
+
+VALUECODING_VERSION = 3.0.0
