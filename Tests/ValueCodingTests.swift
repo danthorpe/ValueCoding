@@ -12,7 +12,6 @@ import Foundation
 import XCTest
 @testable import ValueCoding
 
-
 class ValueCodingTests: XCTestCase {
 
     var item: Foo!
