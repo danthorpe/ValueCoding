@@ -1,9 +1,11 @@
 //
-//  Support.swift
-//  ValueCoding
+// ValueCoding
+// File created on 11/10/2015.
 //
-//  Created by Daniel Thorpe on 11/10/2015.
+// Copyright (c) 2015-2017 Daniel Thorpe
 //
+// ValueCoding is licensed under the MIT License. Read the full license at
+// https://github.com/danthorpe/ValueCoding/blob/master/LICENSE
 //
 
 import Foundation
@@ -17,7 +19,7 @@ struct Foo: ValueCoding {
 class FooCoder: NSObject, NSCoding, CodingProtocol {
 
     enum Keys: String {
-        case Bar = "bar"
+        case bar
     }
 
     let value: Foo
@@ -27,12 +29,12 @@ class FooCoder: NSObject, NSCoding, CodingProtocol {
     }
 
     required init?(coder aDecoder: NSCoder) {
-        let bar = aDecoder.decodeObject(forKey: Keys.Bar.rawValue) as? String
+        let bar = aDecoder.decodeObject(forKey: Keys.bar.rawValue) as? String
         value = Foo(bar: bar!)
     }
 
     func encode(with aCoder: NSCoder) {
-        aCoder.encode(value.bar, forKey: Keys.Bar.rawValue)
+        aCoder.encode(value.bar, forKey: Keys.bar.rawValue)
     }
 }
 
@@ -56,7 +58,7 @@ func == (lhs: Baz, rhs: Baz) -> Bool {
 class BazCoder: NSObject, NSCoding, CodingProtocol {
 
     enum Keys: String {
-        case Bat = "bat"
+        case baz
     }
 
     let value: Baz
@@ -66,11 +68,11 @@ class BazCoder: NSObject, NSCoding, CodingProtocol {
     }
 
     required init?(coder aDecoder: NSCoder) {
-        let bat = aDecoder.decodeObject(forKey: Keys.Bat.rawValue) as? String
+        let bat = aDecoder.decodeObject(forKey: Keys.baz.rawValue) as? String
         value = Baz(bat: bat!)
     }
 
     func encode(with aCoder: NSCoder) {
-        aCoder.encode(value.bat, forKey: Keys.Bat.rawValue)
+        aCoder.encode(value.bat, forKey: Keys.baz.rawValue)
     }
 }
