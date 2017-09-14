@@ -1,15 +1,16 @@
 //
-//  ValueCodingTests.swift
-//  ValueCoding
+// ValueCoding
+// File created on 11/10/2015.
 //
-//  Created by Daniel Thorpe on 11/10/2015.
+// Copyright (c) 2015-2017 Daniel Thorpe
 //
+// ValueCoding is licensed under the MIT License. Read the full license at
+// https://github.com/danthorpe/ValueCoding/blob/master/LICENSE
 //
 
 import Foundation
 import XCTest
 @testable import ValueCoding
-
 
 class ValueCodingTests: XCTestCase {
 
@@ -36,7 +37,7 @@ class ValueCodingTests: XCTestCase {
             Foo(bar: "Bonjour le monde"),
             Foo(bar: "Hallo Welt"),
             Foo(bar: "हैलो वर्ल्ड"),
-            Foo(bar: "こんにちは世界"),
+            Foo(bar: "こんにちは世界")
         ]
         nested = [
             items
