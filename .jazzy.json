@@ -3,11 +3,11 @@
 	"author_url": "http://danthorpe.me",
 	"github_url": "https://github.com/danthorpe/ValueCoding",
 	"module": "ValueCoding",
-	"module_version": "2.0.0",
+	"module_version": "2.2.0",
 	"readme": "README.md",
-	"swift_version": "2.3",	
+	"swift_version": "3.2",
 	"xcodebuild_arguments": [
-		"-project", "ValueCoding.xcodeproj", 
+		"-project", "ValueCoding.xcodeproj",
 		"-scheme", "ValueCoding"
 	],
 	"exclude": ["Tests"]

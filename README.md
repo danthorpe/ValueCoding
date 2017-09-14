@@ -25,7 +25,7 @@ struct Foo: ValueCoding {
 class FooCoder: NSObject, NSCoding, CodingType {
 
     enum Keys: String {
-        case Bar = "bar"
+        case bar = "bar"
     }
 
     let value: Foo
@@ -87,4 +87,3 @@ ValueCoding builds as a cross platform (iOS, OS X, watchOS, tvOS) extension comp
 ```ruby
 pod 'ValueCoding'
 ```
-
